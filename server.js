@@ -9,7 +9,11 @@ const {userJoin,getCurrentUser,userLeave,getRoomUsers}=require('./utils/users');
 const app = express();
 const server = http.createServer(app);  // Create the httpServer
 
-const io = socketio(server);  // Pass the httpServer to socket.io
+//const io = socketio(server);  deosnt work in github in normal pc it does
+
+const io = socketio(server, {    // Pass the httpServer to socket.io
+    path: '/socket.io'
+  });
 
 // Set static folder
 app.use(express.static(__dirname));

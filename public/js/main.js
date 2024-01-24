@@ -6,7 +6,9 @@ const userList=document.getElementById('users');
 
 
 
-const socket = io();
+//const socket = io(); doesnt work in github in normal pc it does
+
+const socket = io('https://mhasiemmalik.github.io');
 
 // Get username and room from URL
 const { username, room } = Qs.parse(location.search, { ignoreQueryPrefix: true });

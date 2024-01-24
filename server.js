@@ -12,7 +12,7 @@ const server = http.createServer(app);  // Create the httpServer
 const io = socketio(server);  // Pass the httpServer to socket.io
 
 // Set static folder
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(__dirname));
 
 const botName='VaveLink Bot'
 // Run when client connects

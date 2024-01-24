@@ -8,7 +8,8 @@ const userList=document.getElementById('users');
 
 //const socket = io(); doesnt work in github in normal pc it does
 
-const socket = io('https://mhasiemmalik.github.io');
+const socket = io.connect('https://mhasiemmalik.github.io', { path: '/socket.io' });
+
 
 // Get username and room from URL
 const { username, room } = Qs.parse(location.search, { ignoreQueryPrefix: true });

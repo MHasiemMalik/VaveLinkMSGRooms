@@ -14,7 +14,7 @@ const { username, room } = Qs.parse(location.search, { ignoreQueryPrefix: true }
 //console.log(username, room);
 
 //join chat room
-socket.emit('joinRoom',{username, room});
+socket.emit('joinRoom', { username, room, timeZone: new Date().getTimezoneOffset() });
 
 //Get room
 socket.on('roomUsers',({room,users}) =>{
@@ -51,6 +51,12 @@ chatForm.addEventListener('submit',(e)=>{
 function outputMessage(message){
     const div=document.createElement('div');
     div.classList.add('message');
+
+    //i deployed the app on a german server so i needed to fix the time zone as it was 5.5 hours ahead of IST
+    //const serverTime = new Date(message.time);
+    //const localTime = new Date(serverTime.getTime() + (5 * 60 + 30) * 60 * 1000);
+
+
     div.innerHTML=`<p class="meta">${message.username} <span>${message.time}</span></p>
     <p class="text">
         ${message.text}

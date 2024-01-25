@@ -18,8 +18,8 @@ const botName='VaveLink Bot'
 // Run when client connects
 io.on('connection', socket => {
     
-   socket.on('joinRoom',({username,room})=>{
-      const user=userJoin(socket.id,username,room);
+   socket.on('joinRoom',({username,room, timeZone})=>{
+      const user=userJoin(socket.id,username,room, timeZone);
 
       socket.join(user.room);
         
@@ -50,7 +50,7 @@ io.on('connection', socket => {
         const user=userLeave(socket.id);
 
         if(user){
-            io.to(user.room).emit('message',formatMessage(botName,`${user.username} user has left the chat :(`));
+            io.to(user.room).emit('message',formatMessage(botName,`${user.username} has left the chat :(`));
             io.to(user.room).emit('roomUsers',{
                 room:user.room,
                 users:getRoomUsers(user.room)

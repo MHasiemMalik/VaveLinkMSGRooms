@@ -6,12 +6,7 @@ const userList=document.getElementById('users');
 
 
 
-//const socket = io(); doesnt work in github in normal pc it does
-
-const socket = io.connect('https://mhasiemmalik.github.io', {
-  path: '/socket.io',
-  transports: ['polling'] // Force the use of polling instead of WebSocket
-});
+const socket = io();
 
 // Get username and room from URL
 const { username, room } = Qs.parse(location.search, { ignoreQueryPrefix: true });
